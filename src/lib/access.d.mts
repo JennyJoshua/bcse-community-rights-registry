@@ -1,4 +1,4 @@
-import type { DemoUser } from "./demo-auth";
 export type WorkspaceCapability = "view_workspace" | "manage_workspace" | "manage_records" | "review_records" | "view_audit";
-export function canAccessWorkspace(user: DemoUser, workspaceId: string): boolean;
-export function hasWorkspaceCapability(user: DemoUser, workspaceId: string, capability: WorkspaceCapability): boolean;
+type AccessUser = { memberships: { workspaceId: string; role: string }[] };
+export function canAccessWorkspace(user: AccessUser, workspaceId: string): boolean;
+export function hasWorkspaceCapability(user: AccessUser, workspaceId: string, capability: WorkspaceCapability): boolean;
