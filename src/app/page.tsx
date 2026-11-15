@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const modules = [
   {
     number: "01",
@@ -49,7 +51,7 @@ export default function Home() {
       </div>
 
       <header className="site-header">
-        <a className="brand" href="/" aria-label="BCSE home">
+        <Link className="brand" href="/" aria-label="BCSE home">
           <span className="brand-mark">B</span>
           <span>
             <strong>BCSE</strong>
