@@ -4,8 +4,8 @@
 - Repository: `JennyJoshua/bcse-community-rights-registry`
 - Document ID: BCSE-PRD-001
 - Specification: Notion page, Product and Technical Specification v0.1
-- Current phase: Batch 1 — authentication and community workspace shell (open draft PR #3)
-- Main branch: Batch 0 foundation merged
+- Current phase: Batch 2 — governance records and evidence portfolio (implementation branch; PR pending)
+- Main branch: Batch 0 and Batch 1 merged
 - Data policy: synthetic demonstration data only
 - Deployment: not authorised
 - Hosted database: not authorised
@@ -27,14 +27,21 @@ The software records information supplied or approved by users. It must not dete
 
 Role labels do not themselves establish customary authority or legal standing.
 
-## Batch 1 implementation candidate
+## Batch 1 — merged
 - Local-only selectable synthetic demonstration accounts.
 - HMAC-signed HTTP-only demo session cookie.
 - Workspace list and protected workspace detail page.
-- Server-side workspace membership and capability checks.
-- Tests for membership isolation and role capability boundaries.
+- Server-side workspace membership and role capability checks.
 - No database or database-level RLS. These application checks are not production security controls.
 - See `docs/BATCH_1_IMPLEMENTATION.md`.
+
+## Batch 2 — implementation candidate
+- Read-only synthetic governance-record catalogue.
+- Metadata-only evidence portfolio with source, provenance, classification and review-status examples.
+- Server-side workspace membership and `view_records` capability checks.
+- Cross-workspace data-scoping tests.
+- No uploads, file storage, real evidence, database or legal verification.
+- See `docs/BATCH_2_IMPLEMENTATION.md`.
 
 ## Initial modules
 1. Community workspace
@@ -44,10 +51,10 @@ Role labels do not themselves establish customary authority or legal standing.
 5. Objections and complaints
 6. Audit and export
 
-## Data classification for prototype
+## Prototype classifications
 - `PUBLIC_DEMO`: safe synthetic data intended for public demonstration
-- `INTERNAL_DEMO`: synthetic operational examples
-- `RESTRICTED_DEMO`: synthetic examples used to test restricted workflows
+- `INTERNAL_DEMO`: synthetic examples for internal workflow testing
+- `RESTRICTED_DEMO`: synthetic examples for restricted-workflow testing
 - `SACRED_SECRET_PLACEHOLDER`: metadata-only placeholder; never enter actual sacred or secret content
 
 ## Non-negotiable safeguards
@@ -63,8 +70,6 @@ Role labels do not themselves establish customary authority or legal standing.
 Separate explicit approval is required before creating a hosted database, applying hosted migrations, connecting production authentication/storage, deploying publicly, purchasing services, or using real community data. Legal, governance, privacy and security readiness must be independently reviewed before a real-data pilot. Main-branch merge also requires explicit approval.
 
 ## Next batches
-- Batch 1: authentication and workspace shell
-- Batch 2: governance records and evidence portfolio
 - Batch 3: access controls and permission workflows
 - Batch 4: objections, audit and export
 - Batch 5: security review and readiness assessment
