@@ -25,6 +25,9 @@ export const DEMO_USERS: DemoUser[] = [
   { id: "demo-records", displayName: "Jordan Lee", email: "jordan@example.test", memberships: [
     { workspaceId: "coastal-demo", workspaceName: "Coastal Community (Demo)", role: "records_officer" },
   ] },
+  { id: "demo-workspace-admin", displayName: "Morgan Ellis", email: "morgan@example.test", memberships: [
+    { workspaceId: "forest-demo", workspaceName: "Forest Community (Demo)", role: "workspace_administrator" },
+  ] },
   { id: "demo-reviewer", displayName: "Taylor Reed", email: "taylor@example.test", memberships: [
     { workspaceId: "forest-demo", workspaceName: "Forest Community (Demo)", role: "community_reviewer" },
   ] },
