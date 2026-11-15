@@ -1,9 +1,9 @@
 const ROLE_CAPABILITIES = {
-  platform_administrator: ["view_workspace", "manage_workspace", "manage_records", "review_records", "view_audit"],
-  workspace_administrator: ["view_workspace", "manage_workspace", "manage_records", "review_records", "view_audit"],
-  records_officer: ["view_workspace", "manage_records"],
-  community_reviewer: ["view_workspace", "review_records"],
-  read_only_auditor: ["view_workspace", "view_audit"],
+  platform_administrator: ["view_workspace", "view_records", "manage_workspace", "manage_records", "review_records", "view_audit"],
+  workspace_administrator: ["view_workspace", "view_records", "manage_workspace", "manage_records", "review_records", "view_audit"],
+  records_officer: ["view_workspace", "view_records", "manage_records"],
+  community_reviewer: ["view_workspace", "view_records", "review_records"],
+  read_only_auditor: ["view_workspace", "view_records", "view_audit"],
 };
 
 export function canAccessWorkspace(user, workspaceId) {

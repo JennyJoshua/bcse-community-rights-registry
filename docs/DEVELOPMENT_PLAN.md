@@ -5,7 +5,7 @@
 - Product boundaries, synthetic-data-only policy and architecture.
 - Next.js + TypeScript application scaffold and baseline CI.
 
-## Batch 1 — Authentication and workspace shell (implementation candidate; PR #3 open)
+## Batch 1 — Authentication and workspace shell (merged)
 - Local-only synthetic sign-in and sign-out.
 - Signed HTTP-only demonstration session.
 - User profile context and workspace list.
@@ -13,10 +13,12 @@
 - Cross-workspace and role-capability tests.
 - No hosted Supabase, database, migrations or production identity.
 
-## Batch 2 — Governance and evidence
-- Synthetic governance and representative records.
-- Evidence metadata and synthetic file fixtures.
-- Clear distinction between user assertions and official instruments.
+## Batch 2 — Governance records and evidence portfolio (implementation candidate)
+- Read-only synthetic governance and representative-record catalogue.
+- Metadata-only evidence catalogue with provenance/source fields and review status.
+- Explicit distinction between community assertions, supplied documents and official-instrument examples.
+- Workspace-scoped server-side view capability checks.
+- No uploads, database, hosted services, legal verification or real data.
 
 ## Batch 3 — Access and permissions
 - Workspace-scoped access controls.
