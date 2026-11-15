@@ -1,7 +1,6 @@
 import "server-only";
 import { createHmac, timingSafeEqual } from "node:crypto";
 import { cookies } from "next/headers";
-import { canAccessWorkspace } from "./access.mjs";
 export { canAccessWorkspace } from "./access.mjs";
 
 export type WorkspaceRole =
