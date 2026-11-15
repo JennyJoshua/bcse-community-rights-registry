@@ -4,22 +4,20 @@
 - Repository: `JennyJoshua/bcse-community-rights-registry`
 - Document ID: BCSE-PRD-001
 - Specification: Notion page, Product and Technical Specification v0.1
-- Current phase: Batch 0 — project foundation
+- Current phase: Batch 1 — authentication and community workspace shell (open draft PR #3)
+- Main branch: Batch 0 foundation merged
 - Data policy: synthetic demonstration data only
 - Deployment: not authorised
 - Hosted database: not authorised
 - Production use: not authorised
 
 ## Purpose
-
 Provide digital tools for communities to organise governance records, supporting evidence, access permissions, objections and portable exports while retaining authority over their heritage and decisions.
 
 ## Product boundary
-
 The software records information supplied or approved by users. It must not determine customary ownership, decide who represents a community, certify consent, adjudicate competing claims, issue legal titles, or replace statutory agencies, courts, mediators or qualified legal practitioners.
 
 ## Initial user roles
-
 - Platform administrator
 - Workspace administrator
 - Records officer
@@ -29,8 +27,16 @@ The software records information supplied or approved by users. It must not dete
 
 Role labels do not themselves establish customary authority or legal standing.
 
-## Initial modules
+## Batch 1 implementation candidate
+- Local-only selectable synthetic demonstration accounts.
+- HMAC-signed HTTP-only demo session cookie.
+- Workspace list and protected workspace detail page.
+- Server-side workspace membership and capability checks.
+- Tests for membership isolation and role capability boundaries.
+- No database or database-level RLS. These application checks are not production security controls.
+- See `docs/BATCH_1_IMPLEMENTATION.md`.
 
+## Initial modules
 1. Community workspace
 2. Governance and representation records
 3. Evidence portfolio
@@ -39,14 +45,12 @@ Role labels do not themselves establish customary authority or legal standing.
 6. Audit and export
 
 ## Data classification for prototype
-
 - `PUBLIC_DEMO`: safe synthetic data intended for public demonstration
 - `INTERNAL_DEMO`: synthetic operational examples
 - `RESTRICTED_DEMO`: synthetic examples used to test restricted workflows
 - `SACRED_SECRET_PLACEHOLDER`: metadata-only placeholder; never enter actual sacred or secret content
 
 ## Non-negotiable safeguards
-
 - No real community or sensitive personal data in development, tests, issues or demos.
 - No precise customary boundaries, genealogy or sacred/secret material.
 - No public disclosure of objections or disputed claims by default.
@@ -56,12 +60,9 @@ Role labels do not themselves establish customary authority or legal standing.
 - Community data portability and exit must be designed before any real-data pilot.
 
 ## Approval gates
-
-Separate explicit approval is required before creating a hosted database, applying hosted migrations, connecting production authentication/storage, deploying publicly, purchasing services, or using real community data. Legal, governance, privacy and security readiness must be independently reviewed before a real-data pilot.
+Separate explicit approval is required before creating a hosted database, applying hosted migrations, connecting production authentication/storage, deploying publicly, purchasing services, or using real community data. Legal, governance, privacy and security readiness must be independently reviewed before a real-data pilot. Main-branch merge also requires explicit approval.
 
 ## Next batches
-
-- Batch 0: foundation and guardrails
 - Batch 1: authentication and workspace shell
 - Batch 2: governance records and evidence portfolio
 - Batch 3: access controls and permission workflows
