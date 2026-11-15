@@ -2,10 +2,10 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { getCurrentDemoUser } from "@/lib/demo-auth";
 import { hasWorkspaceCapability } from "@/lib/access.mjs";
+import { listGovernanceRecords, listEvidenceItems } from "@/lib/registry-demo.mjs";
 import { signOutAction } from "@/app/sign-out/actions";
 
 export const dynamic = "force-dynamic";
-
 type Props = { params: Promise<{ workspaceId: string }> };
 
 export default async function WorkspacePage({ params }: Props) {
@@ -15,6 +15,9 @@ export default async function WorkspacePage({ params }: Props) {
   if (!hasWorkspaceCapability(user, workspaceId, "view_workspace")) notFound();
   const membership = user.memberships.find((item) => item.workspaceId === workspaceId);
   if (!membership) notFound();
+  const canViewRecords = hasWorkspaceCapability(user, workspaceId, "view_records");
+  const governanceCount = canViewRecords ? listGovernanceRecords(workspaceId).length : 0;
+  const evidenceCount = canViewRecords ? listEvidenceItems(workspaceId).length : 0;
 
   return (
     <main className="app-shell">
@@ -29,10 +32,12 @@ export default async function WorkspacePage({ params }: Props) {
         <h1>{membership.workspaceName}</h1>
         <p className="muted">Signed in as {user.displayName}. Your application role is <strong>{membership.role.replaceAll("_", " ")}</strong>.</p>
       </section>
-      <section className="workspace-overview">
-        <div><span className="overview-number">01</span><h2>Workspace shell ready</h2><p>This space is a synthetic demonstration. Governance records, evidence and permissions are not enabled in Batch 1.</p></div>
-        <aside><strong>Access boundary</strong><p>You can open this workspace because your demonstration account has an explicit membership record.</p><p>Changing the workspace address does not grant access to another workspace.</p></aside>
+      <div className="registry-callout"><strong>Records are organised, not adjudicated.</strong><p>Entries in this prototype do not establish customary ownership, representative authority, legal standing or consent. No legal verification is performed.</p></div>
+      <section className="registry-module-grid" aria-label="Workspace modules">
+        <Link className="registry-module-card" href={`/workspaces/${workspaceId}/governance`}><span className="module-number">01 · GOVERNANCE</span><h2>Governance records</h2><p>Browse synthetic meeting and representative-record examples.</p><span className="module-count">{governanceCount} demo records <span aria-hidden="true">→</span></span></Link>
+        <Link className="registry-module-card" href={`/workspaces/${workspaceId}/evidence`}><span className="module-number">02 · EVIDENCE</span><h2>Evidence portfolio</h2><p>Review source, provenance, classification and review-status examples.</p><span className="module-count">{evidenceCount} demo entries <span aria-hidden="true">→</span></span></Link>
       </section>
+      <p className="fine-print">All records are fictional metadata fixtures. Editing, uploading, verification, permissions and real-data use remain disabled.</p>
       <Link className="text-link" href="/app">← Return to workspace list</Link>
     </main>
   );
