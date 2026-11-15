@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-import { canAccessWorkspace, getCurrentDemoUser } from "@/lib/demo-auth";
+import { getCurrentDemoUser } from "@/lib/demo-auth";
+import { hasWorkspaceCapability } from "@/lib/access.mjs";
 import { signOutAction } from "@/app/sign-out/actions";
 
 export const dynamic = "force-dynamic";
@@ -11,7 +12,7 @@ export default async function WorkspacePage({ params }: Props) {
   const { workspaceId } = await params;
   const user = await getCurrentDemoUser();
   if (!user) redirect("/sign-in");
-  if (!canAccessWorkspace(user, workspaceId)) notFound();
+  if (!hasWorkspaceCapability(user, workspaceId, "view_workspace")) notFound();
   const membership = user.memberships.find((item) => item.workspaceId === workspaceId);
   if (!membership) notFound();
 
