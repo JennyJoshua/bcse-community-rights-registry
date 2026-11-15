@@ -57,7 +57,7 @@ export default function Home() {
             <strong>BCSE</strong>
             <small>COMMUNITY RIGHTS REGISTRY</small>
           </span>
-        </a>
+        </Link>
         <span className="environment-tag">FOUNDATION PREVIEW</span>
       </header>
 
